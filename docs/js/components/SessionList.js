@@ -63,7 +63,7 @@ export default function SessionList({ onOpen }) {
       ${sessions === null
         ? html`<p className="text-slate-500 dark:text-slate-400">Загрузка…</p>`
         : sessions.length === 0
-        ? html`<p className="rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-600 p-10 text-center text-slate-500 dark:text-slate-400">Сессий пока нет. Создайте первую, например «Алматы Региональный 2026».</p>`
+        ? html`<p className="rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-600 p-10 text-center text-slate-500 dark:text-slate-400">Сессий пока нет. Создайте первую, например «Almaty Regional 2026».</p>`
         : html`<ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             ${sessions.map((s) => html`
               <li key=${s.id} className="relative">
@@ -81,7 +81,7 @@ export default function SessionList({ onOpen }) {
           <form onSubmit=${create} className="space-y-4">
             <div>
               <label className="field-label" htmlFor="sname">Название соревнования</label>
-              <input id="sname" autoFocus className="field-input" placeholder="Алматы Региональный 2026" value=${name} onChange=${(e) => setName(e.target.value)} />
+              <input id="sname" autoFocus className="field-input" placeholder="Almaty Regional 2026" value=${name} onChange=${(e) => setName(e.target.value)} />
             </div>
             <button disabled=${saving || !name.trim()} className="w-full rounded-lg bg-field py-3 font-semibold text-white disabled:opacity-50">
               ${saving ? "Создаём…" : "Создать сессию"}
