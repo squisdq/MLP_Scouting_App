@@ -31,14 +31,14 @@ export default function SessionView({ sessionId, onBack }) {
   if (session === null) {
     return html`<div className="p-8 text-center">
       <p className="mb-4">Сессия не найдена.</p>
-      <button onClick=${onBack} className="font-semibold text-field underline">К списку сессий</button>
+      <button onClick=${onBack} className="font-semibold text-field dark:text-blue-400 underline">К списку сессий</button>
     </div>`;
   }
 
   return html`
     <div className="mx-auto max-w-6xl px-4 pb-16">
-      <div className="sticky top-0 z-10 -mx-4 mb-6 border-b border-slate-200 bg-slate-100/95 px-4 pb-3 pt-4 backdrop-blur">
-        <button onClick=${onBack} className="mb-1 text-sm font-medium text-field">← Все сессии</button>
+      <div className="sticky top-0 z-10 -mx-4 mb-6 border-b border-slate-200 dark:border-slate-700 bg-slate-100/95 dark:bg-slate-900/95 px-4 pb-3 pt-4 backdrop-blur">
+        <button onClick=${onBack} className="mb-1 text-sm font-medium text-field dark:text-blue-400">← Все сессии</button>
         <div className="flex items-center justify-between gap-3">
           <h1 className="font-score text-3xl font-bold leading-tight sm:text-4xl">${session?.name ?? "…"}</h1>
           <button onClick=${() => setEditing({})} className="shrink-0 rounded-lg bg-field px-4 py-2.5 font-semibold text-white shadow hover:bg-blue-800">
@@ -49,12 +49,12 @@ export default function SessionView({ sessionId, onBack }) {
                onChange=${(e) => setSearch(e.target.value)} className="field-input mt-3" />
       </div>
 
-      ${error && html`<p className="mb-4 rounded-lg bg-red-100 p-3 text-red-800">Ошибка Firebase: ${error}</p>`}
+      ${error && html`<p className="mb-4 rounded-lg bg-red-100 dark:bg-red-900/40 p-3 text-red-800 dark:text-red-200">Ошибка Firebase: ${error}</p>`}
 
       ${teams.length === 0
-        ? html`<p className="rounded-xl border-2 border-dashed border-slate-300 p-10 text-center text-slate-500">Команд пока нет. Добавьте первую.</p>`
+        ? html`<p className="rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-600 p-10 text-center text-slate-500 dark:text-slate-400">Команд пока нет. Добавьте первую.</p>`
         : filtered.length === 0
-        ? html`<p className="p-10 text-center text-slate-500">Ничего не найдено по запросу «${search}».</p>`
+        ? html`<p className="p-10 text-center text-slate-500 dark:text-slate-400">Ничего не найдено по запросу «${search}».</p>`
         : html`<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             ${filtered.map((t) => html`<${TeamCard} key=${t.id} team=${t} onEdit=${() => setEditing(t)} onDelete=${() => remove(t)} />`)}
           </div>`}
