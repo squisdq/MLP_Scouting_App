@@ -36,7 +36,7 @@ export default function SessionList({ onOpen }) {
     <div className="mx-auto max-w-5xl px-4 pb-16 pt-8">
       <header className="mb-8 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="font-score text-4xl font-bold sm:text-5xl">FTC Scout</h1>
+          <h1 className="font-score text-4xl font-bold sm:text-5xl">Pony Scouting</h1>
           <p className="text-slate-600">Выберите соревнование или создайте новое</p>
         </div>
         <button onClick=${() => setOpen(true)} className="rounded-lg bg-field px-5 py-3 font-semibold text-white shadow hover:bg-blue-800 active:scale-[.98]">
