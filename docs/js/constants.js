@@ -7,10 +7,10 @@ export const DRIVING_STYLES = {
 };
 
 export const TEXT_FIELDS = [
-  { key: "auto", label: "Автоном", hint: "Что делает, куда паркуется" },
-  { key: "intake", label: "Интейк", hint: "Скорость, надежность захвата" },
-  { key: "scoring", label: "Шутер / Скоринг", hint: "Как набирает очки" },
-  { key: "endgame", label: "Финал / Эндгейм", hint: "Например, подвес" },
+  { key: "auto", label: "Авто", hint: "Количество типов, парк, стабильность..." },
+  { key: "intake", label: "Интейк", hint: "Скорость, тип, количество моторов..." },
+  { key: "scoring", label: "Шутер", hint: "Стабильность, скорость, бекспин..." },
+  { key: "endgame", label: "Эндгейм", hint: "Флвуэр/шутинг" },
   { key: "notes", label: "Комментарии / Поломки", hint: "Что ещё важно знать" },
 ];
 
