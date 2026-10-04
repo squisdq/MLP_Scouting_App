@@ -4,27 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Pony Scouting</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦄</text></svg>">
-  <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
-      theme: { extend: {
-        fontFamily: { sans: ["Barlow", "system-ui", "sans-serif"], score: ["'Barlow Condensed'", "Barlow", "sans-serif"] },
-        colors: { ink: "#0f172a", field: "#1d4ed8", tape: "#f59e0b" },
-      } },
-    };
+    try { if (localStorage.theme === "dark" || (!("theme" in localStorage) && matchMedia("(prefers-color-scheme: dark)").matches)) document.documentElement.classList.add("dark"); } catch (e) {}
   </script>
-  <style type="text/tailwindcss">
-    body { @apply bg-stone-100 font-sans text-ink antialiased; }
-    .field-label { @apply mb-1 block text-sm font-medium text-slate-600; }
-    .field-input { @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-base focus:border-field focus:outline-none focus:ring-2 focus:ring-field/30; }
-  </style>
+  <link rel="stylesheet" href="./css/theme.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-  <div id="root"><p style="padding:2rem;font-family:sans-serif">Загрузка…</p></div>
+  <div id="root"><p style="padding:2rem">загрузка…</p></div>
   <script type="module" src="./js/main.js"></script>
 </body>
 </html>

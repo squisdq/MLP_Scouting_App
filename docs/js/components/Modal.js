@@ -8,12 +8,12 @@ export default function Modal({ title, onClose, children }) {
   }, [onClose]);
 
   return html`
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-ink/60 sm:items-center sm:p-4"
+    <div className="overlay fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-4"
          onMouseDown=${(e) => e.target === e.currentTarget && onClose()}>
-      <div className="flex max-h-[92dvh] w-full max-w-lg flex-col rounded-t-2xl bg-white dark:bg-slate-800 shadow-xl sm:rounded-2xl">
-        <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-700 px-5 py-4">
-          <h2 className="font-score text-2xl font-semibold">${title}</h2>
-          <button onClick=${onClose} aria-label="Закрыть" className="rounded-lg p-1 text-2xl leading-none text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700">×</button>
+      <div className="panel flex max-h-[92dvh] w-full max-w-lg flex-col rounded-t-3xl sm:rounded-3xl">
+        <div className="panel-head flex items-center justify-between px-5 py-4">
+          <h2 className="f-title text-2xl">${title}</h2>
+          <button onClick=${onClose} aria-label="Закрыть" className="icon-btn">×</button>
         </div>
         <div className="overflow-y-auto p-5">${children}</div>
       </div>

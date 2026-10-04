@@ -30,32 +30,30 @@ export default function SessionView({ sessionId, onBack }) {
 
   if (session === null) {
     return html`<div className="p-8 text-center">
-      <p className="mb-4">Сессия не найдена.</p>
-      <button onClick=${onBack} className="font-semibold text-field dark:text-blue-400 underline">К списку сессий</button>
+      <p className="mb-4 text-lg">Сессия не найдена.</p>
+      <button onClick=${onBack} className="link text-lg underline">К списку сессий</button>
     </div>`;
   }
 
   return html`
-    <div className="mx-auto max-w-6xl px-4 pb-16">
-      <div className="sticky top-0 z-10 -mx-4 mb-6 border-b border-slate-200 dark:border-slate-700 bg-slate-100/95 dark:bg-slate-900/95 px-4 pb-3 pt-4 backdrop-blur">
-        <button onClick=${onBack} className="mb-1 text-sm font-medium text-field dark:text-blue-400">← Все сессии</button>
+    <div className="mx-auto max-w-5xl px-5 pb-24">
+      <div className="sticky-bar sticky top-0 z-10 -mx-5 mb-6 px-5 pb-3 pt-8">
+        <button onClick=${onBack} className="link mb-1 text-lg">← все сессии</button>
         <div className="flex items-center justify-between gap-3">
-          <h1 className="font-score text-3xl font-bold leading-tight sm:text-4xl">${session?.name ?? "…"}</h1>
-          <button onClick=${() => setEditing({})} className="shrink-0 rounded-lg bg-field px-4 py-2.5 font-semibold text-white shadow hover:bg-blue-800">
-            Добавить команду
-          </button>
+          <h1 className="f-title text-3xl leading-tight sm:text-5xl">${session?.name ?? "…"}</h1>
+          <button onClick=${() => setEditing({})} className="btn btn-sm shrink-0">Добавить команду</button>
         </div>
         <input type="search" inputMode="numeric" placeholder="Поиск по номеру команды" value=${search}
-               onChange=${(e) => setSearch(e.target.value)} className="field-input mt-3" />
+               onChange=${(e) => setSearch(e.target.value)} className="input mt-3" />
       </div>
 
-      ${error && html`<p className="mb-4 rounded-lg bg-red-100 dark:bg-red-900/40 p-3 text-red-800 dark:text-red-200">Ошибка Firebase: ${error}</p>`}
+      ${error && html`<p className="err mb-4 p-3">Ошибка Firebase: ${error}</p>`}
 
       ${teams.length === 0
-        ? html`<p className="rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-600 p-10 text-center text-slate-500 dark:text-slate-400">Команд пока нет. Добавьте первую.</p>`
+        ? html`<p className="card p-8 text-center text-lg">Команд пока нет. Добавьте первую.</p>`
         : filtered.length === 0
-        ? html`<p className="p-10 text-center text-slate-500 dark:text-slate-400">Ничего не найдено по запросу «${search}».</p>`
-        : html`<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        ? html`<p className="p-10 text-center text-lg">Ничего не найдено по запросу «${search}».</p>`
+        : html`<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             ${filtered.map((t) => html`<${TeamCard} key=${t.id} team=${t} onEdit=${() => setEditing(t)} onDelete=${() => remove(t)} />`)}
           </div>`}
 

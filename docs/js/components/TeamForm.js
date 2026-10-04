@@ -36,48 +36,42 @@ export default function TeamForm({ sessionId, initial, existingNumbers, onDone }
     <form onSubmit=${submit} className="space-y-4">
       <div className="grid grid-cols-3 gap-3">
         <div>
-          <label className="field-label" htmlFor="num">Номер</label>
+          <label className="label" htmlFor="num">Номер</label>
           <input id="num" required autoFocus=${!isEdit} disabled=${isEdit} inputMode="numeric" pattern="[0-9]*"
-                 className="field-input disabled:bg-slate-100 dark:disabled:bg-slate-700" placeholder="12345"
-                 value=${form.number} onChange=${(e) => set("number", e.target.value)} />
+                 className="input" placeholder="12345" value=${form.number} onChange=${(e) => set("number", e.target.value)} />
         </div>
         <div className="col-span-2">
-          <label className="field-label" htmlFor="tname">Название команды</label>
-          <input id="tname" className="field-input" value=${form.name} onChange=${(e) => set("name", e.target.value)} />
+          <label className="label" htmlFor="tname">Название команды</label>
+          <input id="tname" className="input" value=${form.name} onChange=${(e) => set("name", e.target.value)} />
         </div>
       </div>
 
       <div>
-        <span className="field-label">Стиль драйвинга</span>
+        <span className="label">Стиль драйвинга</span>
         <div className="grid grid-cols-2 gap-2">
           ${Object.keys(DRIVING_STYLES).map((s) => html`
-            <button type="button" key=${s} onClick=${() => set("style", s)}
-              className=${`rounded-lg border px-3 py-2.5 font-medium ${form.style === s ? "border-field bg-field text-white" : "border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800"}`}>
-              ${s}
-            </button>`)}
+            <button type="button" key=${s} onClick=${() => set("style", s)} className=${`opt ${form.style === s ? "opt-on" : ""}`}>${s}</button>`)}
         </div>
       </div>
 
       <div>
-        <span className="field-label">Сила драйвинга: ${form.skill} из 5</span>
+        <span className="label">Сила драйвинга: ${form.skill} из 5</span>
         <div className="flex gap-1">
           ${[1, 2, 3, 4, 5].map((n) => html`
             <button type="button" key=${n} onClick=${() => set("skill", n)} aria-label=${`${n} из 5`}
-              className=${`text-4xl leading-none ${n <= form.skill ? "text-tape" : "text-slate-300 dark:text-slate-600"}`}>★</button>`)}
+              className=${`text-4xl leading-none ${n <= form.skill ? "star-on" : "star-off"}`}>★</button>`)}
         </div>
       </div>
 
       ${TEXT_FIELDS.map((f) => html`
         <div key=${f.key}>
-          <label className="field-label" htmlFor=${f.key}>${f.label}</label>
-          <textarea id=${f.key} rows="2" className="field-input" placeholder=${f.hint}
+          <label className="label" htmlFor=${f.key}>${f.label}</label>
+          <textarea id=${f.key} rows="2" className="input" placeholder=${f.hint}
                     value=${form[f.key]} onChange=${(e) => set(f.key, e.target.value)}></textarea>
         </div>`)}
 
-      ${error && html`<p className="rounded-lg bg-red-100 dark:bg-red-900/40 p-3 text-sm text-red-800 dark:text-red-200">${error}</p>`}
+      ${error && html`<p className="err p-3 text-sm">${error}</p>`}
 
-      <button disabled=${saving} className="w-full rounded-lg bg-field py-3 font-semibold text-white disabled:opacity-50">
-        ${saving ? "Сохраняем…" : isEdit ? "Сохранить изменения" : "Добавить команду"}
-      </button>
+      <button disabled=${saving} className="btn w-full">${saving ? "Сохраняем…" : isEdit ? "Сохранить изменения" : "Добавить команду"}</button>
     </form>`;
 }
