@@ -10,7 +10,7 @@ export const TEXT_FIELDS = [
   { key: "auto", label: "Авто", hint: "Количество типов, парк, стабильность..." },
   { key: "intake", label: "Интейк", hint: "Скорость, тип, количество моторов..." },
   { key: "scoring", label: "Шутер", hint: "Стабильность, скорость, бекспин..." },
-  { key: "endgame", label: "Эндгейм", hint: "Флвуэр/шутинг" },
+  { key: "endgame", label: "Эндгейм", hint: "Флaуэр/шутинг" },
   { key: "notes", label: "Комментарии / Поломки", hint: "Что ещё важно знать" },
 ];
 

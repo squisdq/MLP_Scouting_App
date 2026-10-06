@@ -60,7 +60,7 @@ export default function SessionList({ onOpen }) {
       ${sessions === null
         ? html`<p className="text-lg">загрузка…</p>`
         : sessions.length === 0
-        ? html`<p className="card p-8 text-center text-lg">Сессий пока нет. Создайте первую, например «Алматы Региональный 2026».</p>`
+        ? html`<p className="card p-8 text-center text-lg">Сессий пока нет. Создайте первую, например «Almighty Regional 2026».</p>`
         : html`<ul className="grid gap-8 sm:grid-cols-2">
             ${sessions.map((s) => html`
               <li key=${s.id} className="relative">
